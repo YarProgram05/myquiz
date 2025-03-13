@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Викторина</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Викторина</h1>
+    <div class="quiz-container">
+        <div id="quiz">
+            <div class="question">
+                <p>1. Какой язык используется для структуры веб-страниц?</p>
+                <div class="options">
+                    <label><input type="radio" name="q1" value="a"> a) CSS</label>
+                    <label><input type="radio" name="q1" value="b"> b) JavaScript</label>
+                    <label><input type="radio" name="q1" value="c"> c) HTML</label>
+                </div>
+            </div>
+            <div class="question">
+                <p>2. Какой из следующих типов данных является числовым в JavaScript?</p>
+                <div class="options">
+                    <label><input type="radio" name="q2" value="a"> a) String</label>
+                    <label><input type="radio" name="q2" value="b"> b) Number</label>
+                    <label><input type="radio" name="q2" value="c"> c) Boolean</label>
+                </div>
+            </div>
+            <button onclick="submitQuiz()">Проверить результаты</button>
+        </div>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+
+            // Проверка первого вопроса
+            const q1Answer = document.querySelector('input[name="q1"]:checked');
+            if (q1Answer && q1Answer.value === 'c') {
+                score++;
+            }
+
+            // Проверка второго вопроса
+            const q2Answer = document.querySelector('input[name="q2"]:checked');
+            if (q2Answer && q2Answer.value === 'b') {
+                score++;
+            }
+
+            // Отображение результата
+            const resultDiv = document.getElementById('result');
+            resultDiv.textContent = `Вы набрали ${score} из 2 баллов.`;
+        }
+    </script>
+</body>
+</html>
