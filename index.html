@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Викторина по неорганической химии</title>
+    <title>Викторины</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,25 +15,13 @@
             text-align: center;
             color: #333;
         }
-        .quiz-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .question {
+        .menu {
+            text-align: center;
             margin-bottom: 20px;
         }
-        .options label {
-            display: block;
-            margin: 10px 0;
-        }
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
+        .menu button {
+            padding: 10px 20px;
+            margin: 5px;
             background-color: #007BFF;
             color: white;
             border: none;
@@ -41,8 +29,24 @@
             cursor: pointer;
             font-size: 16px;
         }
-        button:hover {
+        .menu button:hover {
             background-color: #0056b3;
+        }
+        .quiz-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .options label {
+            display: block;
+            margin: 10px 0;
         }
         .result {
             margin-top: 20px;
@@ -53,110 +57,307 @@
     </style>
 </head>
 <body>
-    <h1>Викторина по неорганической химии</h1>
-    <div class="quiz-container">
-        <div id="quiz">
-            <div class="question">
-                <p>1. Как называется вещество с формулой H₂O?</p>
-                <div class="options">
-                    <label><input type="radio" name="q1" value="a"> a) Углекислый газ</label>
-                    <label><input type="radio" name="q1" value="b"> b) Вода</label>
-                    <label><input type="radio" name="q1" value="c"> c) Аммиак</label>
-                </div>
+    <h1>Выберите викторину</h1>
+    <div class="menu">
+        <button onclick="showQuiz('general')">Общая викторина</button>
+        <button onclick="showQuiz('chemistry')">Неорганическая химия</button>
+        <button onclick="showQuiz('football')">Футбол</button>
+    </div>
+
+    <!-- Общая викторина -->
+    <div id="general-quiz" class="quiz-container">
+        <div class="question">
+            <p>1. Какой язык используется для структуры веб-страниц?</p>
+            <div class="options">
+                <label><input type="radio" name="q1" value="a"> a) CSS</label>
+                <label><input type="radio" name="q1" value="b"> b) JavaScript</label>
+                <label><input type="radio" name="q1" value="c"> c) HTML</label>
             </div>
-            <div class="question">
-                <p>2. Какой газ поддерживает горение?</p>
-                <div class="options">
-                    <label><input type="radio" name="q2" value="a"> a) Азот</label>
-                    <label><input type="radio" name="q2" value="b"> b) Кислород</label>
-                    <label><input type="radio" name="q2" value="c"> c) Гелий</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>3. Какая кислота имеет формулу HCl?</p>
-                <div class="options">
-                    <label><input type="radio" name="q3" value="a"> a) Серная кислота</label>
-                    <label><input type="radio" name="q3" value="b"> b) Соляная кислота</label>
-                    <label><input type="radio" name="q3" value="c"> c) Азотная кислота</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>4. Какой элемент является самым легким?</p>
-                <div class="options">
-                    <label><input type="radio" name="q4" value="a"> a) Гелий</label>
-                    <label><input type="radio" name="q4" value="b"> b) Водород</label>
-                    <label><input type="radio" name="q4" value="c"> c) Литий</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>5. Как называется реакция между кислотой и основанием?</p>
-                <div class="options">
-                    <label><input type="radio" name="q5" value="a"> a) Окисление</label>
-                    <label><input type="radio" name="q5" value="b"> b) Нейтрализация</label>
-                    <label><input type="radio" name="q5" value="c"> c) Восстановление</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>6. Какая из перечисленных солей растворима в воде?</p>
-                <div class="options">
-                    <label><input type="radio" name="q6" value="a"> a) AgCl</label>
-                    <label><input type="radio" name="q6" value="b"> b) NaCl</label>
-                    <label><input type="radio" name="q6" value="c"> c) CaCO₃</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>7. Какой элемент имеет символ Fe?</p>
-                <div class="options">
-                    <label><input type="radio" name="q7" value="a"> a) Фтор</label>
-                    <label><input type="radio" name="q7" value="b"> b) Железо</label>
-                    <label><input type="radio" name="q7" value="c"> c) Фосфор</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>8. Какое вещество используется для получения кислорода в лаборатории?</p>
-                <div class="options">
-                    <label><input type="radio" name="q8" value="a"> a) KMnO₄</label>
-                    <label><input type="radio" name="q8" value="b"> b) NaOH</label>
-                    <label><input type="radio" name="q8" value="c"> c) H₂SO₄</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>9. Как называется процесс отдачи электронов?</p>
-                <div class="options">
-                    <label><input type="radio" name="q9" value="a"> a) Окисление</label>
-                    <label><input type="radio" name="q9" value="b"> b) Восстановление</label>
-                    <label><input type="radio" name="q9" value="c"> c) Диссоциация</label>
-                </div>
-            </div>
-            <div class="question">
-                <p>10. Какой газ выделяется при взаимодействии цинка с соляной кислотой?</p>
-                <div class="options">
-                    <label><input type="radio" name="q10" value="a"> a) Кислород</label>
-                    <label><input type="radio" name="q10" value="b"> b) Водород</label>
-                    <label><input type="radio" name="q10" value="c"> c) Углекислый газ</label>
-                </div>
-            </div>
-            <button onclick="submitQuiz()">Проверить результаты</button>
         </div>
-        <div id="result" class="result"></div>
+        <div class="question">
+            <p>2. Какой из следующих типов данных является числовым в JavaScript?</p>
+            <div class="options">
+                <label><input type="radio" name="q2" value="a"> a) String</label>
+                <label><input type="radio" name="q2" value="b"> b) Number</label>
+                <label><input type="radio" name="q2" value="c"> c) Boolean</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. Что такое HTTP?</p>
+            <div class="options">
+                <label><input type="radio" name="q3" value="a"> a) Язык программирования</label>
+                <label><input type="radio" name="q3" value="b"> b) Протокол передачи данных</label>
+                <label><input type="radio" name="q3" value="c"> c) База данных</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. Какой тег используется для создания ссылки в HTML?</p>
+            <div class="options">
+                <label><input type="radio" name="q4" value="a"> a) <a></label>
+                <label><input type="radio" name="q4" value="b"> b) <link></label>
+                <label><input type="radio" name="q4" value="c"> c) <href></label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. Какой метод JavaScript используется для вывода данных в консоль?</p>
+            <div class="options">
+                <label><input type="radio" name="q5" value="a"> a) alert()</label>
+                <label><input type="radio" name="q5" value="b"> b) console.log()</label>
+                <label><input type="radio" name="q5" value="c"> c) print()</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. Какой элемент используется для создания кнопки в HTML?</p>
+            <div class="options">
+                <label><input type="radio" name="q6" value="a"> a) <button></label>
+                <label><input type="radio" name="q6" value="b"> b) <input type="submit"></label>
+                <label><input type="radio" name="q6" value="c"> c) Оба варианта верны</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. Что такое CSS?</p>
+            <div class="options">
+                <label><input type="radio" name="q7" value="a"> a) Язык программирования</label>
+                <label><input type="radio" name="q7" value="b"> b) Язык стилей</label>
+                <label><input type="radio" name="q7" value="c"> c) База данных</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. Какой символ используется для комментариев в JavaScript?</p>
+            <div class="options">
+                <label><input type="radio" name="q8" value="a"> a) //</label>
+                <label><input type="radio" name="q8" value="b"> b) /* */</label>
+                <label><input type="radio" name="q8" value="c"> c) Оба варианта верны</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. Какой метод добавляет элемент в конец массива в JavaScript?</p>
+            <div class="options">
+                <label><input type="radio" name="q9" value="a"> a) push()</label>
+                <label><input type="radio" name="q9" value="b"> b) pop()</label>
+                <label><input type="radio" name="q9" value="c"> c) shift()</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. Какой тег используется для создания заголовка первого уровня в HTML?</p>
+            <div class="options">
+                <label><input type="radio" name="q10" value="a"> a) <h1></label>
+                <label><input type="radio" name="q10" value="b"> b) <header></label>
+                <label><input type="radio" name="q10" value="c"> c) <title></label>
+            </div>
+        </div>
+        <button onclick="submitGeneralQuiz()">Проверить результаты</button>
+        <div id="general-result" class="result"></div>
+    </div>
+
+    <!-- Викторина по неорганической химии -->
+    <div id="chemistry-quiz" class="quiz-container">
+        <div class="question">
+            <p>1. Как называется вещество с формулой H₂O?</p>
+            <div class="options">
+                <label><input type="radio" name="cq1" value="a"> a) Углекислый газ</label>
+                <label><input type="radio" name="cq1" value="b"> b) Вода</label>
+                <label><input type="radio" name="cq1" value="c"> c) Аммиак</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. Какой газ поддерживает горение?</p>
+            <div class="options">
+                <label><input type="radio" name="cq2" value="a"> a) Азот</label>
+                <label><input type="radio" name="cq2" value="b"> b) Кислород</label>
+                <label><input type="radio" name="cq2" value="c"> c) Гелий</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. Какая кислота имеет формулу HCl?</p>
+            <div class="options">
+                <label><input type="radio" name="cq3" value="a"> a) Серная кислота</label>
+                <label><input type="radio" name="cq3" value="b"> b) Соляная кислота</label>
+                <label><input type="radio" name="cq3" value="c"> c) Азотная кислота</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. Какой элемент является самым легким?</p>
+            <div class="options">
+                <label><input type="radio" name="cq4" value="a"> a) Гелий</label>
+                <label><input type="radio" name="cq4" value="b"> b) Водород</label>
+                <label><input type="radio" name="cq4" value="c"> c) Литий</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. Как называется реакция между кислотой и основанием?</p>
+            <div class="options">
+                <label><input type="radio" name="cq5" value="a"> a) Окисление</label>
+                <label><input type="radio" name="cq5" value="b"> b) Нейтрализация</label>
+                <label><input type="radio" name="cq5" value="c"> c) Восстановление</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. Какая из перечисленных солей растворима в воде?</p>
+            <div class="options">
+                <label><input type="radio" name="cq6" value="a"> a) AgCl</label>
+                <label><input type="radio" name="cq6" value="b"> b) NaCl</label>
+                <label><input type="radio" name="cq6" value="c"> c) CaCO₃</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. Какой элемент имеет символ Fe?</p>
+            <div class="options">
+                <label><input type="radio" name="cq7" value="a"> a) Фтор</label>
+                <label><input type="radio" name="cq7" value="b"> b) Железо</label>
+                <label><input type="radio" name="cq7" value="c"> c) Фосфор</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. Какое вещество используется для получения кислорода в лаборатории?</p>
+            <div class="options">
+                <label><input type="radio" name="cq8" value="a"> a) KMnO₄</label>
+                <label><input type="radio" name="cq8" value="b"> b) NaOH</label>
+                <label><input type="radio" name="cq8" value="c"> c) H₂SO₄</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. Как называется процесс отдачи электронов?</p>
+            <div class="options">
+                <label><input type="radio" name="cq9" value="a"> a) Окисление</label>
+                <label><input type="radio" name="cq9" value="b"> b) Восстановление</label>
+                <label><input type="radio" name="cq9" value="c"> c) Диссоциация</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. Какой газ выделяется при взаимодействии цинка с соляной кислотой?</p>
+            <div class="options">
+                <label><input type="radio" name="cq10" value="a"> a) Кислород</label>
+                <label><input type="radio" name="cq10" value="b"> b) Водород</label>
+                <label><input type="radio" name="cq10" value="c"> c) Углекислый газ</label>
+            </div>
+        </div>
+        <button onclick="submitChemistryQuiz()">Проверить результаты</button>
+        <div id="chemistry-result" class="result"></div>
+    </div>
+
+    <!-- Викторина по футболу -->
+    <div id="football-quiz" class="quiz-container">
+        <div class="question">
+            <p>1. Кто является лучшим бомбардиром в истории чемпионатов мира по футболу?</p>
+            <div class="options">
+                <label><input type="radio" name="fq1" value="a"> a) Пеле</label>
+                <label><input type="radio" name="fq1" value="b"> b) Мирослав Клозе</label>
+                <label><input type="radio" name="fq1" value="c"> c) Роналдо</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. Какой клуб выиграл больше всего Лиг чемпионов УЕФА?</p>
+            <div class="options">
+                <label><input type="radio" name="fq2" value="a"> a) Реал Мадрид</label>
+                <label><input type="radio" name="fq2" value="b"> b) Барселона</label>
+                <label><input type="radio" name="fq2" value="c"> c) Манчестер Юнайтед</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. Сколько игроков одной команды находится на поле во время матча?</p>
+            <div class="options">
+                <label><input type="radio" name="fq3" value="a"> a) 10</label>
+                <label><input type="radio" name="fq3" value="b"> b) 11</label>
+                <label><input type="radio" name="fq3" value="c"> c) 12</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. Какой футболист получил прозвище "Пеле белого континента"?</p>
+            <div class="options">
+                <label><input type="radio" name="fq4" value="a"> a) Зинедин Зидан</label>
+                <label><input type="radio" name="fq4" value="b"> b) Криштиану Роналду</label>
+                <label><input type="radio" name="fq4" value="c"> c) Лионель Месси</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. Какой трофей вручается победителю чемпионата мира по футболу?</p>
+            <div class="options">
+                <label><input type="radio" name="fq5" value="a"> a) Кубок европейских чемпионов</label>
+                <label><input type="radio" name="fq5" value="b"> b) Кубок мира</label>
+                <label><input type="radio" name="fq5" value="c"> c) Кубок конфедераций</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. Какой футбольный клуб известен как "Красные дьяволы"?</p>
+            <div class="options">
+                <label><input type="radio" name="fq6" value="a"> a) Ливерпуль</label>
+                <label><input type="radio" name="fq6" value="b"> b) Манчестер Юнайтед</label>
+                <label><input type="radio" name="fq6" value="c"> c) Арсенал</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. Какой игрок забил гол "рука Бога" в 1986 году?</p>
+            <div class="options">
+                <label><input type="radio" name="fq7" value="a"> a) Марадона</label>
+                <label><input type="radio" name="fq7" value="b"> b) Пеле</label>
+                <label><input type="radio" name="fq7" value="c"> c) Роналдо</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. Какая страна выиграла чемпионат мира по футболу в 2022 году?</p>
+            <div class="options">
+                <label><input type="radio" name="fq8" value="a"> a) Аргентина</label>
+                <label><input type="radio" name="fq8" value="b"> b) Франция</label>
+                <label><input type="radio" name="fq8" value="c"> c) Бразилия</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. Как называется стадион "Реал Мадрида"?</p>
+            <div class="options">
+                <label><input type="radio" name="fq9" value="a"> a) Камп Ноу</label>
+                <label><input type="radio" name="fq9" value="b"> b) Сантьяго Бернабеу</label>
+                <label><input type="radio" name="fq9" value="c"> c) Анфилд</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. Сколько минут длится стандартный футбольный матч (без учета дополнительного времени)?</p>
+            <div class="options">
+                <label><input type="radio" name="fq10" value="a"> a) 80</label>
+                <label><input type="radio" name="fq10" value="b"> b) 90</label>
+                <label><input type="radio" name="fq10" value="c"> c) 100</label>
+            </div>
+        </div>
+        <button onclick="submitFootballQuiz()">Проверить результаты</button>
+        <div id="football-result" class="result"></div>
     </div>
 
     <script>
-        function submitQuiz() {
+        function showQuiz(quizType) {
+            const generalQuiz = document.getElementById('general-quiz');
+            const chemistryQuiz = document.getElementById('chemistry-quiz');
+            const footballQuiz = document.getElementById('football-quiz');
+
+            if (quizType === 'general') {
+                generalQuiz.style.display = 'block';
+                chemistryQuiz.style.display = 'none';
+                footballQuiz.style.display = 'none';
+            } else if (quizType === 'chemistry') {
+                generalQuiz.style.display = 'none';
+                chemistryQuiz.style.display = 'block';
+                footballQuiz.style.display = 'none';
+            } else if (quizType === 'football') {
+                generalQuiz.style.display = 'none';
+                chemistryQuiz.style.display = 'none';
+                footballQuiz.style.display = 'block';
+            }
+        }
+
+        function submitGeneralQuiz() {
             let score = 0;
 
             // Проверка ответов
             const correctAnswers = {
-                q1: 'b',
+                q1: 'c',
                 q2: 'b',
                 q3: 'b',
-                q4: 'b',
+                q4: 'a',
                 q5: 'b',
-                q6: 'b',
+                q6: 'c',
                 q7: 'b',
-                q8: 'a',
+                q8: 'c',
                 q9: 'a',
-                q10: 'b'
+                q10: 'a'
             };
 
             for (let question in correctAnswers) {
@@ -167,10 +368,67 @@
             }
 
             // Отображение результата
-            const resultDiv = document.getElementById('result');
+            const resultDiv = document.getElementById('general-result');
+            resultDiv.textContent = `Вы набрали ${score} из 10 баллов.`;
+        }
+
+        function submitChemistryQuiz() {
+            let score = 0;
+
+            // Проверка ответов
+            const correctAnswers = {
+                cq1: 'b',
+                cq2: 'b',
+                cq3: 'b',
+                cq4: 'b',
+                cq5: 'b',
+                cq6: 'b',
+                cq7: 'b',
+                cq8: 'a',
+                cq9: 'a',
+                cq10: 'b'
+            };
+
+            for (let question in correctAnswers) {
+                const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
+                    score++;
+                }
+            }
+
+            // Отображение результата
+            const resultDiv = document.getElementById('chemistry-result');
+            resultDiv.textContent = `Вы набрали ${score} из 10 баллов.`;
+        }
+
+        function submitFootballQuiz() {
+            let score = 0;
+
+            // Проверка ответов
+            const correctAnswers = {
+                fq1: 'b',
+                fq2: 'a',
+                fq3: 'b',
+                fq4: 'c',
+                fq5: 'b',
+                fq6: 'b',
+                fq7: 'a',
+                fq8: 'a',
+                fq9: 'b',
+                fq10: 'b'
+            };
+
+            for (let question in correctAnswers) {
+                const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (selectedAnswer && selectedAnswer.value === correctAnswers[question]) {
+                    score++;
+                }
+            }
+
+            // Отображение результата
+            const resultDiv = document.getElementById('football-result');
             resultDiv.textContent = `Вы набрали ${score} из 10 баллов.`;
         }
     </script>
 </body>
 </html>
-```
