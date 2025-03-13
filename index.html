@@ -27,15 +27,33 @@
             min-height: 100vh;
             color: var(--text);
             padding: 2rem;
+
+
+        }
+
+        .particle {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            will-change: transform;
+            background: #03dac6; /* Цвет из вашей темы */
+            opacity: 0.3;
         }
 
         h1 {
             text-align: center;
             font-weight: 600;
-            text-transform: uppercase;
+            text-transform: linear;
             letter-spacing: 2px;
             margin-bottom: 3rem;
             position: relative;
+            background: linear-gradient(135deg, #6200ea, #03dac6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: hue 10s infinite linear;
+        }
+
+
         }
 
         h1::after {
@@ -43,10 +61,11 @@
             position: absolute;
             width: 80px;
             height: 3px;
-            background: var(--secondary);
+            background: linear-gradient(135deg, #6200ea, #03dac6);
             bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
+
         }
 
         .menu {
@@ -58,7 +77,9 @@
         }
 
         .menu button {
-            background: #333; /* Более темный фон */
+            background: linear-gradient(135deg, #6200ea, #03dac6);
+            background-size: 200% 200%;
+            transition: background-position 0.3s;
             color: #e0e0e0; /* Светлый текст */
             padding: 1.2rem 2.5rem;
             border: none;
@@ -103,6 +124,13 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        .question:hover {
+            transform: translateZ(10px);
+            transition: transform 0.3s;
         }
 
         .quiz-container.active {
@@ -114,11 +142,13 @@
             margin-bottom: 2rem;
             padding-bottom: 1.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
         }
 
         .question:last-child {
             border-bottom: none;
         }
+
 
         .options label {
             display: block;
@@ -171,6 +201,21 @@
             font-weight: 600;
             animation: glow 1.5s infinite alternate;
         }
+        .correct-answer {
+            animation: correct 1s ease-in-out;
+        }
+
+        @keyframes correct {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+
+        @keyframes hue {
+            from { filter: hue-rotate(0deg); }
+            to { filter: hue-rotate(360deg); }
+        }
 
         @keyframes glow {
             from {
@@ -191,9 +236,13 @@
                 padding: 1.5rem;
             }
         }
+        
+        
     </style>
 </head>
 <body>
+
+
     <h1>Выберите викторину</h1>
     <div class="menu">
         <button onclick="showQuiz('chemistry')">Неорганическая химия</button>
@@ -203,6 +252,7 @@
 
     <!-- Викторина по химии -->
     <div id="chemistry-quiz" class="quiz-container">
+
         <div class="question">
             <p>1. Как называется вещество с формулой H₂O?</p>
             <div class="options">
@@ -373,6 +423,7 @@
         <div id="football-result" class="result"></div>
     </div>
 
+
     <!-- Сложная викторина по химии -->
     <div id="chemistry_2-quiz" class="quiz-container">
         <div class="question">
@@ -460,6 +511,9 @@
     </div>
 
     <script>
+
+
+
         function showQuiz(quizType) {
             document.querySelectorAll('.quiz-container').forEach(container => {
                 container.classList.remove('active');
@@ -508,6 +562,51 @@
                 q.style.animation = `fade-in 0.6s ${i * 0.15}s forwards`;
             });
         });
+
+        const particles = [];
+        const particleCount = 20;
+
+        function createParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+
+                const size = Math.random() * 6 + 2; // Размер 2-8px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+
+                particle.style.left = `${Math.random() * 100}vw`;
+                particle.style.top = `${Math.random() * 100}vh`;
+
+                particle.speedX = (Math.random() - 0.5) * 2;
+                particle.speedY = (Math.random() - 0.5) * 2;
+
+                document.body.appendChild(particle);
+                particles.push(particle);
+            }
+        }
+
+        function animateParticles() {
+            particles.forEach(particle => {
+                let x = parseFloat(particle.style.left);
+                let y = parseFloat(particle.style.top);
+
+                x += particle.speedX;
+                y += particle.speedY;
+
+                // Отскок от границ
+                if (x < 0 || x > window.innerWidth) particle.speedX *= -1;
+                if (y < 0 || y > window.innerHeight) particle.speedY *= -1;
+
+                particle.style.left = `${x}px`;
+                particle.style.top = `${y}px`;
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        createParticles();
+        animateParticles();
     </script>
 </body>
 </html>
