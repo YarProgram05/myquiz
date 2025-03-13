@@ -3,67 +3,205 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Тесты</title>
+    <title>Интерактивные викторины</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            margin: 0;
-            padding: 20px;
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #6200ea;
+            --secondary: #03dac6;
+            --background: #121212;
+            --card: #1e1e1e;
+            --text: #e0e0e0;
         }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            min-height: 100vh;
+            color: var(--text);
+            padding: 2rem;
+        }
+
         h1 {
             text-align: center;
-            color: #333;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 3rem;
+            position: relative;
         }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         .menu {
-            text-align: center;
-            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 4rem;
         }
+
         .menu button {
-            padding: 10px 20px;
-            margin: 5px;
-            background-color: #007BFF;
-            color: white;
+            background: #333; /* Более темный фон */
+            color: #e0e0e0; /* Светлый текст */
+            padding: 1.2rem 2.5rem;
             border: none;
-            border-radius: 5px;
+            border-radius: 12px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
+
+        .menu button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--secondary);
+            z-index: -1;
+            transition: width 0.3s ease-in-out;
+        }
+
         .menu button:hover {
-            background-color: #0056b3;
+            color: var(--primary);
+            transform: translateY(-3px);
         }
+
+        .menu button:hover::before {
+            width: 100%;
+        }
+
         .quiz-container {
-            max-width: 600px;
+            max-width: 800px;
             margin: 0 auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: none;
+            background: var(--card);
+            border-radius: 18px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+
+        .quiz-container.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .question {
-            margin-bottom: 20px;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
+
+        .question:last-child {
+            border-bottom: none;
+        }
+
         .options label {
             display: block;
-            margin: 10px 0;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin: 0.8rem 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
         }
+
+        .options input[type="radio"] {
+            margin-right: 1rem;
+            accent-color: var(--secondary);
+        }
+
+        .options label:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(10px);
+        }
+
+        button.submit-btn {
+            background: var(--secondary);
+            color: var(--primary);
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(3, 218, 198, 0.4);
+            display: block;
+            margin: 2rem auto 0;
+        }
+
+        button.submit-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(3, 218, 198, 0.6);
+        }
+
         .result {
-            margin-top: 20px;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
             text-align: center;
-            font-size: 18px;
-            font-weight: bold;
+            font-size: 1.2rem;
+            font-weight: 600;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 0 10px var(--secondary);
+            }
+            to {
+                box-shadow: 0 0 20px var(--secondary), 0 0 30px var(--secondary);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quiz-container {
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Выберите тест</h1>
+    <h1>Выберите викторину</h1>
     <div class="menu">
-        <button onclick="showQuiz('chemistry')">Неорганическая химия (легкий)</button>
+        <button onclick="showQuiz('chemistry')">Неорганическая химия</button>
         <button onclick="showQuiz('football')">Футбол</button>
-        <button onclick="showQuiz('chemistry_2')">Химия (сложный)</button>
+        <button onclick="showQuiz('chemistry_2')">Химия PRO</button>
     </div>
-    <!-- Викторина по неорганической химии -->
+
+    <!-- Викторина по химии -->
     <div id="chemistry-quiz" class="quiz-container">
         <div class="question">
             <p>1. Как называется вещество с формулой H₂O?</p>
@@ -145,9 +283,10 @@
                 <label><input type="radio" name="cq10" value="c"> c) Углекислый газ</label>
             </div>
         </div>
-        <button onclick="submitQuiz('chemistry')">Проверить результаты</button>
+        <button class="submit-btn" onclick="submitQuiz('chemistry')">Проверить результаты</button>
         <div id="chemistry-result" class="result"></div>
     </div>
+
     <!-- Викторина по футболу -->
     <div id="football-quiz" class="quiz-container">
         <div class="question">
@@ -230,10 +369,12 @@
                 <label><input type="radio" name="fq10" value="c"> c) 100</label>
             </div>
         </div>
-        <button onclick="submitQuiz('football')">Проверить результаты</button>
+        <button class="submit-btn" onclick="submitQuiz('football')">Проверить результаты</button>
         <div id="football-result" class="result"></div>
     </div>
-    <div class="quiz-container" id="chemistry-quiz_2">
+
+    <!-- Сложная викторина по химии -->
+    <div id="chemistry_2-quiz" class="quiz-container">
         <div class="question">
             <p>1. Какой процесс происходит при взаимодействии алюминия с раствором щелочи?</p>
             <div class="options">
@@ -314,81 +455,59 @@
                 <label><input type="radio" name="chq10" value="c"> c) Растворение цинка в соляной кислоте</label>
             </div>
         </div>
-        <button onclick="submitQuiz('chemistry_2')">Проверить результаты</button>
+        <button class="submit-btn" onclick="submitQuiz('chemistry_2')">Проверить результаты</button>
         <div id="chemistry_2-result" class="result"></div>
     </div>
+
     <script>
         function showQuiz(quizType) {
-            const chemistryQuiz = document.getElementById('chemistry-quiz');
-            const footballQuiz = document.getElementById('football-quiz');
-            const chemistryQuiz_2 = document.getElementById('chemistry-quiz_2');
-            // Скрываем все викторины
-            chemistryQuiz.style.display = 'none';
-            footballQuiz.style.display = 'none';
-            chemistryQuiz_2.style.display = 'none';
-            // Показываем выбранную викторину
-            if (quizType === 'chemistry') {
-                chemistryQuiz.style.display = 'block';
-            } else if (quizType === 'football') {
-                footballQuiz.style.display = 'block';
-            } else if (quizType === 'chemistry_2') {
-                chemistryQuiz_2.style.display = 'block';
-            }
+            document.querySelectorAll('.quiz-container').forEach(container => {
+                container.classList.remove('active');
+                setTimeout(() => container.style.display = 'none', 500);
+            });
+
+            const selectedQuiz = document.getElementById(`${quizType}-quiz`);
+            setTimeout(() => {
+                selectedQuiz.style.display = 'block';
+                setTimeout(() => selectedQuiz.classList.add('active'), 50);
+            }, 500);
         }
 
         function submitQuiz(quizType) {
-            let score = 0;
-            // Определяем правильные ответы для каждой викторины
             const correctAnswers = {
                 chemistry: {
-                    cq1: 'b',
-                    cq2: 'b',
-                    cq3: 'b',
-                    cq4: 'b',
-                    cq5: 'b',
-                    cq6: 'b',
-                    cq7: 'b',
-                    cq8: 'a',
-                    cq9: 'a',
-                    cq10: 'b'
+                    cq1: 'b', cq2: 'b', cq3: 'b', cq4: 'b', cq5: 'b',
+                    cq6: 'b', cq7: 'b', cq8: 'a', cq9: 'a', cq10: 'b'
                 },
                 football: {
-                    fq1: 'b',
-                    fq2: 'a',
-                    fq3: 'b',
-                    fq4: 'c',
-                    fq5: 'b',
-                    fq6: 'b',
-                    fq7: 'a',
-                    fq8: 'a',
-                    fq9: 'b',
-                    fq10: 'b'
+                    fq1: 'b', fq2: 'a', fq3: 'b', fq4: 'c', fq5: 'b',
+                    fq6: 'b', fq7: 'a', fq8: 'a', fq9: 'b', fq10: 'b'
                 },
                 chemistry_2: {
-                    chq1: 'c',
-                    chq2: 'b',
-                    chq3: 'c',
-                    chq4: 'b',
-                    chq5: 'a',
-                    chq6: 'b',
-                    chq7: 'a',
-                    chq8: 'b',
-                    chq9: 'a',
-                    chq10: 'a'
+                    chq1: 'c', chq2: 'b', chq3: 'c', chq4: 'b', chq5: 'a',
+                    chq6: 'b', chq7: 'a', chq8: 'b', chq9: 'a', chq10: 'a'
                 }
             };
-            // Получаем выбранные ответы пользователя
+
+            let score = 0;
             const answers = correctAnswers[quizType];
-            for (let question in answers) {
-                const selectedAnswer = document.querySelector(`input[name="${question}"]:checked`);
-                if (selectedAnswer && selectedAnswer.value === answers[question]) {
-                    score++;
-                }
-            }
-            // Отображаем результат
+
+            Object.keys(answers).forEach(question => {
+                const selected = document.querySelector(`input[name="${question}"]:checked`);
+                if (selected?.value === answers[question]) score++;
+            });
+
             const resultDiv = document.getElementById(`${quizType}-result`);
-            resultDiv.textContent = `Вы набрали ${score} из ${Object.keys(answers).length} баллов.`;
+            resultDiv.textContent = `Результат: ${score}/${Object.keys(answers).length} ✅`;
+            resultDiv.style.animation = 'glow 1.5s infinite alternate';
         }
+
+        document.querySelectorAll('.quiz-container').forEach(container => {
+            const questions = container.querySelectorAll('.question');
+            questions.forEach((q, i) => {
+                q.style.animation = `fade-in 0.6s ${i * 0.15}s forwards`;
+            });
+        });
     </script>
 </body>
 </html>
