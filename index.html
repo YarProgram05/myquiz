@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Викторины</title>
+    <title>Тесты</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -57,10 +57,11 @@
     </style>
 </head>
 <body>
-    <h1>Выберите викторину</h1>
+    <h1>Выберите тест</h1>
     <div class="menu">
-        <button onclick="showQuiz('chemistry')">Неорганическая химия</button>
+        <button onclick="showQuiz('chemistry')">Неорганическая химия (легкий)</button>
         <button onclick="showQuiz('football')">Футбол</button>
+        <button onclick="showQuiz('chemistry_2')">Химия (сложный)</button>
     </div>
 
     <!-- Викторина по неорганической химии -->
@@ -235,21 +236,109 @@
         <div id="football-result" class="result"></div>
     </div>
 
+    <div class="quiz-container" id="chemistry-quiz_2">
+        <div class="question">
+            <p>1. Какой процесс происходит при взаимодействии алюминия с раствором щелочи?</p>
+            <div class="options">
+                <label><input type="radio" name="chq1" value="a"> a) Окисление алюминия</label>
+                <label><input type="radio" name="chq1" value="b"> b) Восстановление алюминия</label>
+                <label><input type="radio" name="chq1" value="c"> c) Комплексообразование</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>2. Укажите вещество, которое является амфотерным оксидом.</p>
+            <div class="options">
+                <label><input type="radio" name="chq2" value="a"> a) CO₂</label>
+                <label><input type="radio" name="chq2" value="b"> b) Al₂O₃</label>
+                <label><input type="radio" name="chq2" value="c"> c) SO₃</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>3. Какой из перечисленных металлов НЕ реагирует с водой при комнатной температуре?</p>
+            <div class="options">
+                <label><input type="radio" name="chq3" value="a"> a) Na</label>
+                <label><input type="radio" name="chq3" value="b"> b) Ca</label>
+                <label><input type="radio" name="chq3" value="c"> c) Cu</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>4. Какая реакция протекает при взаимодействии брома с раствором йодида калия?</p>
+            <div class="options">
+                <label><input type="radio" name="chq4" value="a"> a) Обменная</label>
+                <label><input type="radio" name="chq4" value="b"> b) Замещения</label>
+                <label><input type="radio" name="chq4" value="c"> c) Соединения</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>5. Какое вещество образуется при пропускании углекислого газа через известковую воду (Ca(OH)₂)?</p>
+            <div class="options">
+                <label><input type="radio" name="chq5" value="a"> a) CaCO₃</label>
+                <label><input type="radio" name="chq5" value="b"> b) Ca(HCO₃)₂</label>
+                <label><input type="radio" name="chq5" value="c"> c) CaO</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>6. Укажите формулу вещества, которое является сильным электролитом.</p>
+            <div class="options">
+                <label><input type="radio" name="chq6" value="a"> a) CH₃COOH</label>
+                <label><input type="radio" name="chq6" value="b"> b) HCl</label>
+                <label><input type="radio" name="chq6" value="c"> c) NH₃</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>7. Какой продукт образуется при взаимодействии этанола с натрием?</p>
+            <div class="options">
+                <label><input type="radio" name="chq7" value="a"> a) C₂H₅ONa</label>
+                <label><input type="radio" name="chq7" value="b"> b) C₂H₄</label>
+                <label><input type="radio" name="chq7" value="c"> c) CH₃COOH</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>8. Какая из перечисленных реакций является реакцией поликонденсации?</p>
+            <div class="options">
+                <label><input type="radio" name="chq8" value="a"> a) Синтез полиэтилена</label>
+                <label><input type="radio" name="chq8" value="b"> b) Синтез белка из аминокислот</label>
+                <label><input type="radio" name="chq8" value="c"> c) Синтез полипропилена</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>9. Какой из перечисленных элементов имеет наибольшее значение электроотрицательности?</p>
+            <div class="options">
+                <label><input type="radio" name="chq9" value="a"> a) F</label>
+                <label><input type="radio" name="chq9" value="b"> b) O</label>
+                <label><input type="radio" name="chq9" value="c"> c) Cl</label>
+            </div>
+        </div>
+        <div class="question">
+            <p>10. Какой из перечисленных процессов является каталитическим?</p>
+            <div class="options">
+                <label><input type="radio" name="chq10" value="a"> a) Разложение пероксида водорода под действием MnO₂</label>
+                <label><input type="radio" name="chq10" value="b"> b) Горение магния на воздухе</label>
+                <label><input type="radio" name="chq10" value="c"> c) Растворение цинка в соляной кислоте</label>
+            </div>
+        </div>
+        <button onclick="submitQuiz()">Проверить результаты</button>
+        <div id="chemistry-result" class="result"></div>
+    </div>
+
     <script>
         function showQuiz(quizType) {
             const chemistryQuiz = document.getElementById('chemistry-quiz');
             const footballQuiz = document.getElementById('football-quiz');
-
+            const chemistryQuiz_2 = document.getElementById('chemistry-quiz_2');
+            
             // Скрываем все викторины
             chemistryQuiz.style.display = 'none';
             footballQuiz.style.display = 'none';
-
+            chemistryQuiz_2.style.display = 'none';
+            
             // Показываем выбранную викторину
             if (quizType === 'chemistry') {
                 chemistryQuiz.style.display = 'block';
-            } else if (quizType === 'football') {
+            } elif  (quizType === 'football') {
                 footballQuiz.style.display = 'block';
-            }
+            } else if (quizType === 'chemistry_2') {
+                chemistryQuiz_2.style.display = 'block';
         }
 
         function submitQuiz(quizType) {
@@ -280,7 +369,18 @@
                     fq8: 'a',
                     fq9: 'b',
                     fq10: 'b'
-                }
+                },
+                chemistry_2: {
+                    chq1: 'c',
+                    chq2: 'b',
+                    chq3: 'c',
+                    chq4: 'b',
+                    chq5: 'a',
+                    chq6: 'b',
+                    chq7: 'a',
+                    chq8: 'b',
+                    chq9: 'a',
+                    chq10: 'a'
             };
 
             // Получаем выбранные ответы пользователя
