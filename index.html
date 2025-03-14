@@ -241,12 +241,21 @@
                 padding: 1.5rem;
             }
         }
+        .timer {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: linear-gradient(135deg, #6200ea, #5d139a);
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
 
 
     </style>
 </head>
 <body>
-
 
     <h1>Выберите тест</h1>
     <div class="menu">
@@ -258,7 +267,7 @@
 
     <!-- Викторина по химии -->
     <div id="chemistry-quiz" class="quiz-container">
-
+        <div class="timer">Осталось времени: <span>10:00</span></div>
         <div class="question">
             <p>1. Как называется вещество с формулой H₂O?</p>
             <div class="options">
@@ -345,6 +354,7 @@
 
     <!-- Викторина по футболу -->
     <div id="football-quiz" class="quiz-container">
+        <div class="timer">Осталось времени: <span>10:00</span></div>
         <div class="question">
             <p>1. Кто является лучшим бомбардиром в истории чемпионатов мира по футболу?</p>
             <div class="options">
@@ -432,6 +442,7 @@
 
     <!-- Сложная викторина по химии -->
     <div id="chemistry_2-quiz" class="quiz-container">
+        <div class="timer">Осталось времени: <span>10:00</span></div>
         <div class="question">
             <p>1. Какой процесс происходит при взаимодействии алюминия с раствором щелочи?</p>
             <div class="options">
@@ -518,139 +529,140 @@
 
     <!-- Тест по искусстве -->
     <div id="art-quiz" class="quiz-container">
+        <div class="timer">Осталось времени: <span>10:00</span></div>
         <div class="question">
             <p>1. Какой художник создал картину "Черный квадрат"?</p>
             <div class="options">
-                <label><input type="radio" name="q1" value="a"> Пабло Пикассо</label>
-                <label><input type="radio" name="q1" value="b"> Казимир Малевич</label>
-                <label><input type="radio" name="q1" value="c"> Винсент Ван Гог</label>
-                <label><input type="radio" name="q1" value="d"> Сальвадор Дали</label>
+                <label><input type="radio" name="q1" value="a"> a) Пабло Пикассо</label>
+                <label><input type="radio" name="q1" value="b"> b) Казимир Малевич</label>
+                <label><input type="radio" name="q1" value="c"> c) Винсент Ван Гог</label>
+                <label><input type="radio" name="q1" value="d"> d) Сальвадор Дали</label>
             </div>
         </div>
         <div class="question">
             <p>2. Какое направление в искусстве ознаменовало отказ от традиционного изображения реальности и акцент на абстракции?</p>
             <div class="options">
-                <label><input type="radio" name="q2" value="a"> Импрессионизм</label>
-                <label><input type="radio" name="q2" value="b"> Сюрреализм</label>
-                <label><input type="radio" name="q2" value="c"> Кубизм</label>
-                <label><input type="radio" name="q2" value="d"> Экспрессионизм</label>
+                <label><input type="radio" name="q2" value="a"> a) Импрессионизм</label>
+                <label><input type="radio" name="q2" value="b"> b) Сюрреализм</label>
+                <label><input type="radio" name="q2" value="c"> c) Кубизм</label>
+                <label><input type="radio" name="q2" value="d"> d) Экспрессионизм</label>
             </div>
         </div>
         <div class="question">
             <p>3. Как называется архитектурный стиль, характеризующийся использованием готических арок и роз?</p>
             <div class="options">
-                <label><input type="radio" name="q3" value="a"> Барокко</label>
-                <label><input type="radio" name="q3" value="b"> Романский</label>
-                <label><input type="radio" name="q3" value="c"> Готический</label>
-                <label><input type="radio" name="q3" value="d"> Ренессанс</label>
+                <label><input type="radio" name="q3" value="a"> a) Барокко</label>
+                <label><input type="radio" name="q3" value="b"> b) Романский</label>
+                <label><input type="radio" name="q3" value="c"> c) Готический</label>
+                <label><input type="radio" name="q3" value="d"> d) Ренессанс</label>
             </div>
         </div>
         <div class="question">
             <p>4. Какая картина является частью цикла работ Винсента Ван Гога, посвященного ночному небу?</p>
             <div class="options">
-                <label><input type="radio" name="q4" value="a"> "Подсолнухи"</label>
-                <label><input type="radio" name="q4" value="b"> "Звездная ночь"</label>
-                <label><input type="radio" name="q4" value="c"> "Ночное кафе"</label>
-                <label><input type="radio" name="q4" value="d"> "Пшеничное поле с воронами"</label>
+                <label><input type="radio" name="q4" value="a"> a) "Подсолнухи"</label>
+                <label><input type="radio" name="q4" value="b"> b) "Звездная ночь"</label>
+                <label><input type="radio" name="q4" value="c"> c) "Ночное кафе"</label>
+                <label><input type="radio" name="q4" value="d"> d) "Пшеничное поле с воронами"</label>
             </div>
         </div>
         <div class="question">
             <p>5. Какой философский концепт лег в основу сюрреализма?</p>
             <div class="options">
-                <label><input type="radio" name="q5" value="a"> Рационализм</label>
-                <label><input type="radio" name="q5" value="b"> Экзистенциализм</label>
-                <label><input type="radio" name="q5" value="c"> Психоанализ</label>
-                <label><input type="radio" name="q5" value="d"> Прагматизм</label>
+                <label><input type="radio" name="q5" value="a"> a) Рационализм</label>
+                <label><input type="radio" name="q5" value="b"> b) Экзистенциализм</label>
+                <label><input type="radio" name="q5" value="c"> c) Психоанализ</label>
+                <label><input type="radio" name="q5" value="d"> d) Прагматизм</label>
             </div>
         </div>
         <div class="question">
             <p>6. Какой художник написал "Крик", символизирующий экзистенциальное отчаяние?</p>
             <div class="options">
-                <label><input type="radio" name="q6" value="a"> Эдвард Мунк</label>
-                <label><input type="radio" name="q6" value="b"> Густав Климт</label>
-                <label><input type="radio" name="q6" value="c"> Фрида Кало</label>
-                <label><input type="radio" name="q6" value="d"> Эгон Шиле</label>
+                <label><input type="radio" name="q6" value="a"> a) Эдвард Мунк</label>
+                <label><input type="radio" name="q6" value="b"> b) Густав Климт</label>
+                <label><input type="radio" name="q6" value="c"> c) Фрида Кало</label>
+                <label><input type="radio" name="q6" value="d"> d) Эгон Шиле</label>
             </div>
         </div>
         <div class="question">
             <p>7. Какой архитектор известен своими проектами в стиле модерн, включая Саграда Фамилия?</p>
             <div class="options">
-                <label><input type="radio" name="q7" value="a"> Ле Корбюзье</label>
-                <label><input type="radio" name="q7" value="b"> Антони Гауди</label>
-                <label><input type="radio" name="q7" value="c"> Фрэнк Ллойд Райт</label>
-                <label><input type="radio" name="q7" value="d"> Заха Хадид</label>
+                <label><input type="radio" name="q7" value="a"> a) Ле Корбюзье</label>
+                <label><input type="radio" name="q7" value="b"> b) Антони Гауди</label>
+                <label><input type="radio" name="q7" value="c"> c) Фрэнк Ллойд Райт</label>
+                <label><input type="radio" name="q7" value="d"> d) Заха Хадид</label>
             </div>
         </div>
         <div class="question">
             <p>8. Как называется техника живописи, при которой краска наносится точками?</p>
             <div class="options">
-                <label><input type="radio" name="q8" value="a"> Пуантилизм</label>
-                <label><input type="radio" name="q8" value="b"> Импрессионизм</label>
-                <label><input type="radio" name="q8" value="c"> Акварель</label>
-                <label><input type="radio" name="q8" value="d"> Темпера</label>
+                <label><input type="radio" name="q8" value="a"> a) Пуантилизм</label>
+                <label><input type="radio" name="q8" value="b"> b) Импрессионизм</label>
+                <label><input type="radio" name="q8" value="c"> c) Акварель</label>
+                <label><input type="radio" name="q8" value="d"> d) Темпера</label>
             </div>
         </div>
         <div class="question">
             <p>9. Какой художник создал серию картин "Водяные лилии"?</p>
             <div class="options">
-                <label><input type="radio" name="q9" value="a"> Клод Моне</label>
-                <label><input type="radio" name="q9" value="b"> Поль Сезанн</label>
-                <label><input type="radio" name="q9" value="c"> Эдгар Дега</label>
-                <label><input type="radio" name="q9" value="d"> Пьер-Огюст Ренуар</label>
+                <label><input type="radio" name="q9" value="a"> a) Клод Моне</label>
+                <label><input type="radio" name="q9" value="b"> b) Поль Сезанн</label>
+                <label><input type="radio" name="q9" value="c"> c) Эдгар Дега</label>
+                <label><input type="radio" name="q9" value="d"> d) Пьер-Огюст Ренуар</label>
             </div>
         </div>
         <div class="question">
             <p>10. Какой стиль искусства был популярен в эпоху правления Людовика XIV?</p>
             <div class="options">
-                <label><input type="radio" name="q10" value="a"> Рококо</label>
-                <label><input type="radio" name="q10" value="b"> Барокко</label>
-                <label><input type="radio" name="q10" value="c"> Классицизм</label>
-                <label><input type="radio" name="q10" value="d"> Модернизм</label>
+                <label><input type="radio" name="q10" value="a"> a) Рококо</label>
+                <label><input type="radio" name="q10" value="b"> b) Барокко</label>
+                <label><input type="radio" name="q10" value="c"> c) Классицизм</label>
+                <label><input type="radio" name="q10" value="d"> d) Модернизм</label>
             </div>
         </div>
         <div class="question">
             <p>11. Какой материал преимущественно использовал скульптор Константин Бранкузи?</p>
             <div class="options">
-                <label><input type="radio" name="q11" value="a"> Мрамор</label>
-                <label><input type="radio" name="q11" value="b"> Бронза</label>
-                <label><input type="radio" name="q11" value="c"> Дерево</label>
-                <label><input type="radio" name="q11" value="d"> Глина</label>
+                <label><input type="radio" name="q11" value="a"> a) Мрамор</label>
+                <label><input type="radio" name="q11" value="b"> b) Бронза</label>
+                <label><input type="radio" name="q11" value="c"> c) Дерево</label>
+                <label><input type="radio" name="q11" value="d"> d) Глина</label>
             </div>
         </div>
         <div class="question">
             <p>12. Какое произведение искусства было создано Микеланджело для Сикстинской капеллы?</p>
             <div class="options">
-                <label><input type="radio" name="q12" value="a"> "Давид"</label>
-                <label><input type="radio" name="q12" value="b"> "Пьета"</label>
-                <label><input type="radio" name="q12" value="c"> "Страшный суд"</label>
-                <label><input type="radio" name="q12" value="d"> "Моисей"</label>
+                <label><input type="radio" name="q12" value="a"> a) "Давид"</label>
+                <label><input type="radio" name="q12" value="b"> b) "Пьета"</label>
+                <label><input type="radio" name="q12" value="c"> c) "Страшный суд"</label>
+                <label><input type="radio" name="q12" value="d"> d) "Моисей"</label>
             </div>
         </div>
         <div class="question">
             <p>13. Какой художник создал картину "Утренняя прогулка"?</p>
             <div class="options">
-                <label><input type="radio" name="q13" value="a"> Иван Айвазовский</label>
-                <label><input type="radio" name="q13" value="b"> Илья Репин</label>
-                <label><input type="radio" name="q13" value="c"> Василий Поленов</label>
-                <label><input type="radio" name="q13" value="d"> Исаак Левитан</label>
+                <label><input type="radio" name="q13" value="a"> a) Иван Айвазовский</label>
+                <label><input type="radio" name="q13" value="b"> b) Илья Репин</label>
+                <label><input type="radio" name="q13" value="c"> c) Василий Поленов</label>
+                <label><input type="radio" name="q13" value="d"> d) Исаак Левитан</label>
             </div>
         </div>
         <div class="question">
             <p>14. Какой термин используется для описания искусства, которое вызывает у зрителя чувство тревоги или дискомфорта?</p>
             <div class="options">
-                <label><input type="radio" name="q14" value="a"> Урбанизм</label>
-                <label><input type="radio" name="q14" value="b"> Диссонанс</label>
-                <label><input type="radio" name="q14" value="c"> Архаизм</label>
-                <label><input type="radio" name="q14" value="d"> Минимализм</label>
+                <label><input type="radio" name="q14" value="a"> a) Урбанизм</label>
+                <label><input type="radio" name="q14" value="b"> b) Диссонанс</label>
+                <label><input type="radio" name="q14" value="c"> c) Архаизм</label>
+                <label><input type="radio" name="q14" value="d"> d) Минимализм</label>
             </div>
         </div>
         <div class="question">
             <p>15. Какой художник известен своими работами, выполненными в технике "drip painting"?</p>
             <div class="options">
-                <label><input type="radio" name="q15" value="a"> Джексон Поллок</label>
-                <label><input type="radio" name="q15" value="b"> Марк Ротко</label>
-                <label><input type="radio" name="q15" value="c"> Уиллем де Кунинг</label>
-                <label><input type="radio" name="q15" value="d"> Жоан Миро</label>
+                <label><input type="radio" name="q15" value="a"> a) Джексон Поллок</label>
+                <label><input type="radio" name="q15" value="b"> b) Марк Ротко</label>
+                <label><input type="radio" name="q15" value="c"> c) Уиллем де Кунинг</label>
+                <label><input type="radio" name="q15" value="d"> d) Жоан Миро</label>
             </div>
         </div>
         <button class="submit-btn" onclick="submitQuiz('art')">Проверить результаты</button>
@@ -659,9 +671,14 @@
 
     <script>
 
+        let timeLeft = 600; // 10 минут в секундах
+        let quizTimer;
 
 
         function showQuiz(quizType) {
+            // Останавливаем предыдущий таймер
+            clearInterval(quizTimer);
+            timeLeft = 600;
             document.querySelectorAll('.quiz-container').forEach(container => {
                 container.classList.remove('active');
                 setTimeout(() => container.style.display = 'none', 500);
@@ -672,9 +689,25 @@
                 selectedQuiz.style.display = 'block';
                 setTimeout(() => selectedQuiz.classList.add('active'), 50);
             }, 500);
+
+            // Запуск таймера
+            const timerElement = selectedQuiz.querySelector('.timer span');
+            quizTimer = setInterval(() => {
+                timeLeft--;
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                timerElement.textContent =
+                    `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+                if(timeLeft <= 0) {
+                    clearInterval(quizTimer);
+                    submitQuiz(quizType);
+                }
+            }, 1000);
         }
 
         function submitQuiz(quizType) {
+            clearInterval(quizTimer); // Остановка таймера при ручной отправке
             const correctAnswers = {
                 chemistry: {
                     cq1: 'b', cq2: 'b', cq3: 'b', cq4: 'b', cq5: 'b',
